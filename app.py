@@ -672,7 +672,7 @@ def generate(
       if results:
         yield results
 
-with gr.Blocks(theme=utils.custom_theme) as demo:
+with gr.Blocks() as demo:
   with gr.Row():
     gr.HTML(utils.public_access_warning)
   with gr.Row():
@@ -689,7 +689,6 @@ with gr.Blocks(theme=utils.custom_theme) as demo:
       gr.ChatInterface(
           fn=generate,
           title="Build a Documentary CMS</answer>",
-          type="messages",
           multimodal=True,
           additional_inputs=[
               gr.Textbox(label="viewId"),
@@ -700,4 +699,8 @@ with gr.Blocks(theme=utils.custom_theme) as demo:
           flagging_mode="never",
       )
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    demo.launch(
+      server_name="0.0.0.0",
+      server_port=7860,
+      theme=utils.custom_theme
+    )
